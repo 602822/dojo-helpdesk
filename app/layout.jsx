@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
+
 
 //components
 import NavBar from './components/NavBar'
