@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const About = () => {
   return (
-    <div> This is a Next.js 13 React practise project</div>
-  )
-}
+    <main>
+      <div> This is a Next.js 13 React practise project</div>
+    </main>
+  );
+};
 
-export default About
+export default About;
