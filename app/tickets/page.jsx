@@ -1,11 +1,20 @@
-
-import React from 'react'
+import React from "react";
+import TicketList from "./TicketList";
 
 const Tickets = () => {
-  
   return (
-    <main>Tickets</main>
-  )
-}
+    <main>
+      <nav>
+        <div>
+          <h2>Tickets</h2>
+          <p>
+            <small>Currently open tickets.</small>
+          </p>
+        </div>
+      </nav>
+      <TicketList></TicketList>
+    </main>
+  );
+};
 
-export default Tickets
+export default Tickets;
