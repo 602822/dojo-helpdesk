@@ -1,17 +1,9 @@
 import React from "react";
 import Link from "next/link";
-async function getTickets() {
-  const res = await fetch("http://localhost:4000/tickets", {
-    next: {
-      revalidate: 0,
-    },
-  });
-  return res.json();
-}
+import { getTickets } from "./ticketApi";
 
 export default async function TicketList() {
   const tickets = await getTickets();
-  const length = tickets.length;
   return (
     <>
       {tickets.map((ticket) => (

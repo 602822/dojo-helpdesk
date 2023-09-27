@@ -1,23 +1,5 @@
 import React from "react";
-
-async function getTicket(id) {
-  const res = await fetch("http://localhost:4000/tickets/" + id, {
-    next: {
-      revalidate: 60,
-    },
-  });
-  return res.json();
-}
-
-//just to get the number of tickets
-async function getTickets() {
-  const res = await fetch("http://localhost:4000/tickets", {
-    next: {
-      revalidate: 0,
-    },
-  });
-  return res.json();
-}
+import { getTickets, getTicket } from "../ticketApi";
 
 export default async function TicketDetails({ params }) {
   const ticket = await getTicket(params.id);

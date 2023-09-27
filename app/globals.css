@@ -17,7 +17,7 @@ h1, h2 {
 }
 
 .not-a-ticket {
-  @apply flex justify-center items-center text-xl
+  @apply flex justify-center items-center text-xl 
 }
 
 main {
