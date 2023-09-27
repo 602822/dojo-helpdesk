@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 /* base styles */
+
+
+
+
+
 body {
   background: #ebf0fa;
   @apply text-gray-500 m-8;
@@ -10,6 +15,11 @@ body {
 h1, h2 {
   @apply font-bold text-primary text-lg;
 }
+
+.not-a-ticket {
+  @apply flex justify-center items-center text-xl
+}
+
 main {
   @apply max-w-5xl my-12 mx-auto px-8;
 }

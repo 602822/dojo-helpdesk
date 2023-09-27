@@ -9,9 +9,23 @@ async function getTicket(id) {
   return res.json();
 }
 
+//just to get the number of tickets
+async function getTickets() {
+  const res = await fetch("http://localhost:4000/tickets", {
+    next: {
+      revalidate: 0,
+    },
+  });
+  return res.json();
+}
+
 export default async function TicketDetails({ params }) {
   const ticket = await getTicket(params.id);
-  return (
+  const tickets = await getTickets();
+  const length = tickets.length;
+  return params.id > length ? (
+    <h3 class="not-a-ticket">This is not a Ticket</h3>
+  ) : (
     <main>
       <nav>
         <h2>Ticket Details</h2>
