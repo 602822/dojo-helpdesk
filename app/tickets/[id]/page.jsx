@@ -1,13 +1,31 @@
 import React from "react";
-import { getTickets, getTicket } from "../ticketApi";
+import { PageNotFoundError } from "next/dist/shared/lib/utils";
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const res = await fetch("http://localhost:4000/tickets");
+  const tickets = await res.json();
+  return tickets.map((ticket) => ({
+    id: ticket.id,
+  }));
+}
+
+async function getTicket(id) {
+  const res = await fetch("http://localhost:4000/tickets/" + id, {
+    next: {
+      revalidate: 60,
+    },
+  });
+  if (!res.ok) {
+    new PageNotFoundError();
+  }
+  return res.json();
+}
 
 export default async function TicketDetails({ params }) {
   const ticket = await getTicket(params.id);
-  const tickets = await getTickets();
-  const length = tickets.length;
-  return params.id > length ? (
-    <h3 class="not-a-ticket">This is not a Ticket</h3>
-  ) : (
+  return (
     <main>
       <nav>
         <h2>Ticket Details</h2>

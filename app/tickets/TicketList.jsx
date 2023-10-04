@@ -1,6 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { getTickets } from "./ticketApi";
+
+async function getTickets() {
+  const res = await fetch("http://localhost:4000/tickets", {
+    next: {
+      revalidate: 0,
+    },
+  });
+  return res.json();
+}
 
 export default async function TicketList() {
   const tickets = await getTickets();
